@@ -1,0 +1,19 @@
+{
+  "module_id": 8,
+  "name": "Objects",
+  "lessons": [
+    {"id": 36, "slug": "36_classes_basics", "title": "Classes Basics", "concept_intro": "A class is a blueprint for creating objects. It bundles data and functions together.", "analogy": "A cookie cutter (class) makes cookies (objects). All cookies have the same shape but can have different toppings (attributes)."},
+    {"id": 37, "slug": "37_methods", "title": "Methods", "concept_intro": "Methods are functions that belong to a class. They can access and modify the object's data.", "analogy": "If a Dog is a class, then bark() and fetch() are its methods — things it can DO."},
+    {"id": 38, "slug": "38_attributes", "title": "Attributes", "concept_intro": "Attributes are variables that belong to an object. Instance attributes are unique per object, class attributes are shared.", "analogy": "Every dog has its OWN name (instance attribute), but all dogs share the species 'Canis familiaris' (class attribute)."},
+    {"id": 39, "slug": "39_inheritance", "title": "Inheritance", "concept_intro": "A class can inherit from another class, getting all its methods and attributes plus adding its own.", "analogy": "A SportsCar inherits everything from Car (engine, wheels, drive) but adds turbo and spoiler."},
+    {"id": 40, "slug": "40_when_classes", "title": "When to Use Classes", "concept_intro": "Classes aren't always needed. Use them when you have data AND behavior that belong together.", "analogy": "Use a class when you'd naturally say 'this THING can DO stuff' — a Player can move, a BankAccount can deposit."}
+  ],
+  "project": {
+    "slug": "p8_final_project",
+    "title": "Final Project (Your Choice!)",
+    "description": "Build something YOU want using everything you've learned. Game, tool, bot — your call.",
+    "concepts_used": ["everything"],
+    "steps": ["Choose your project", "Plan the architecture", "Build core features", "Add error handling", "Test thoroughly", "Add bonus features"],
+    "bonus": ["Publish on GitHub", "Add a README", "Share with someone"]
+  }
+}

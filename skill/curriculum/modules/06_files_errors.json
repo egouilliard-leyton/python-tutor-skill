@@ -1,0 +1,19 @@
+{
+  "module_id": 6,
+  "name": "Files & Errors",
+  "lessons": [
+    {"id": 26, "slug": "26_reading_files", "title": "Reading Files", "concept_intro": "Programs can read files from disk. The 'with open()' pattern safely opens and closes files.", "analogy": "Like opening a book, reading it, and putting it back on the shelf."},
+    {"id": 27, "slug": "27_writing_files", "title": "Writing Files", "concept_intro": "Programs can also write to files — saving data that persists after the program ends.", "analogy": "Like writing in a notebook — the notes are still there when you close it."},
+    {"id": 28, "slug": "28_try_except", "title": "Try / Except", "concept_intro": "Sometimes things go wrong: file missing, bad input, network down. try/except lets you handle errors gracefully instead of crashing.", "analogy": "Like a safety net under a trapeze — if something goes wrong, you don't fall to the ground."},
+    {"id": 29, "slug": "29_common_exceptions", "title": "Common Exceptions", "concept_intro": "Different problems raise different exception types. Knowing them helps you catch the right ones.", "analogy": "Like knowing the difference between a flat tire and an empty tank — different problems, different solutions."},
+    {"id": 30, "slug": "30_csv_json", "title": "CSV & JSON", "concept_intro": "CSV and JSON are common formats for storing structured data. Python has built-in modules for both.", "analogy": "CSV is like a spreadsheet. JSON is like a dictionary written in a file."}
+  ],
+  "project": {
+    "slug": "p6_expense_tracker",
+    "title": "Expense Tracker",
+    "description": "Log expenses, categorize, save to CSV, show totals by category.",
+    "concepts_used": ["file_io", "try_except", "csv", "json", "dicts", "functions"],
+    "steps": ["Design data structure", "Add expense function", "Save to CSV", "Load from CSV", "Category totals", "Monthly report"],
+    "bonus": ["Budget limits with warnings", "JSON config file", "Date filtering"]
+  }
+}

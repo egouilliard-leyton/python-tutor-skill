@@ -1,0 +1,19 @@
+{
+  "module_id": 4,
+  "name": "Collections",
+  "lessons": [
+    {"id": 16, "slug": "16_lists_basics", "title": "Lists Basics", "concept_intro": "A list holds multiple values in order. Like a shopping list — each item has a position (index), starting at 0.", "analogy": "A numbered list on paper. Item 0 is at the top."},
+    {"id": 17, "slug": "17_list_methods", "title": "List Methods", "concept_intro": "Lists have built-in superpowers: append (add), remove (delete), sort, reverse, and slicing (grabbing a piece).", "analogy": "Like a playlist — you can add songs, remove songs, shuffle, and play just a section."},
+    {"id": 18, "slug": "18_looping_lists", "title": "Looping Through Lists", "concept_intro": "for item in list: lets you do something with each item. enumerate() also gives you the index.", "analogy": "Like a teacher calling roll — go through each name one by one."},
+    {"id": 19, "slug": "19_dictionaries", "title": "Dictionaries", "concept_intro": "A dictionary maps keys to values. Instead of numbered positions, you use names to look things up.", "analogy": "Like a real dictionary: look up a word (key), get the definition (value). Or like contacts: name → phone number."},
+    {"id": 20, "slug": "20_nested_structures", "title": "Nested Structures", "concept_intro": "Lists of dicts, dicts of lists — real data is often nested. A class roster is a list of student dicts.", "analogy": "Like a filing cabinet: drawers (dict) contain folders (lists) which contain papers (values)."}
+  ],
+  "project": {
+    "slug": "p4_contact_book",
+    "title": "Contact Book",
+    "description": "Add, search, list, and delete contacts stored as dicts in a list.",
+    "concepts_used": ["lists", "dicts", "loops", "input", "functions"],
+    "steps": ["Create data structure", "Add contact function", "Search by name", "List all contacts", "Delete contact", "Menu loop"],
+    "bonus": ["Save to file", "Edit existing contact", "Search by any field"]
+  }
+}

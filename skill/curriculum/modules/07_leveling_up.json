@@ -1,0 +1,19 @@
+{
+  "module_id": 7,
+  "name": "Leveling Up",
+  "lessons": [
+    {"id": 31, "slug": "31_comprehensions", "title": "List Comprehensions", "concept_intro": "A shortcut for creating lists from other lists in one line. Pythonic and powerful.", "analogy": "Like a factory production line: raw material goes in one end, finished product comes out the other, all in one step."},
+    {"id": 32, "slug": "32_string_methods", "title": "String Methods Deep Dive", "concept_intro": "Strings have dozens of methods: split, join, strip, replace, startswith, endswith, and more.", "analogy": "A Swiss Army knife for text — different tools for every text job."},
+    {"id": 33, "slug": "33_modules", "title": "Modules & Imports", "concept_intro": "Modules let you use code that others wrote. Import a module and use its functions.", "analogy": "Like borrowing a tool from a neighbor — someone already built it, just use it."},
+    {"id": 34, "slug": "34_pip", "title": "Installing Packages", "concept_intro": "pip installs packages from the internet. Virtual environments keep projects separate.", "analogy": "Like an app store for Python — thousands of free tools, one command to install."},
+    {"id": 35, "slug": "35_apis", "title": "Working with APIs", "concept_intro": "APIs let your program talk to other services over the internet — weather, news, translation, anything.", "analogy": "Like ordering food delivery: you send a request (order), wait, and get data (food) back."}
+  ],
+  "project": {
+    "slug": "p7_weather_app",
+    "title": "Weather App",
+    "description": "Fetch real weather data from an API and display it nicely.",
+    "concepts_used": ["requests", "json", "modules", "pip", "error_handling", "functions"],
+    "steps": ["Get API key", "Make a request", "Parse JSON response", "Format output", "Add error handling", "Multiple cities"],
+    "bonus": ["5-day forecast", "ASCII weather art", "Save favorite cities"]
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "module_id": 1,
+  "name": "First Steps",
+  "lessons": [
+    {
+      "id": 1,
+      "slug": "01_hello_world",
+      "title": "Hello World",
+      "concept_intro": "print() is how Python talks to you. It displays text on the screen. Every programmer's first program is making the computer say 'Hello, World!'",
+      "analogy": "Think of print() like a megaphone — you put text in, and it shouts it out to the screen.",
+      "exercise": {
+        "goal": "Make Python greet the world — and you!",
+        "rules": [
+          "Use print() to display 'Hello, World!'",
+          "Use print() again to display 'My name is [your name]'",
+          "Use print() a third time to display 'I am learning Python!'"
+        ],
+        "examples": [
+          "When you run your program, it should print 3 lines",
+          "The first line should be exactly: Hello, World!"
+        ],
+        "hints": [
+          "print() needs parentheses with text inside quotes",
+          "Text goes inside quotes: print(\"Hello, World!\")"
+        ],
+        "starter_code": "# Write your three print statements below:\n\n",
+        "test_calls": "    # This exercise uses print(), so just run it and check the output!\n    pass"
+      },
+      "tests": [
+        {"name": "test_hello_world", "description": "First line prints 'Hello, World!'", "check": "output_contains", "value": "Hello, World!"},
+        {"name": "test_has_name", "description": "Second line includes your name", "check": "output_line_count_min", "value": 2},
+        {"name": "test_learning_python", "description": "Mentions learning Python", "check": "output_contains_any", "value": ["learning Python", "Learning Python", "learning python"]}
+      ],
+      "vocabulary": [
+        {"term": "print()", "definition": "A built-in function that displays text on the screen", "analogy": "Like a megaphone for your program"},
+        {"term": "string", "definition": "Text data — anything inside quotes", "analogy": "A string of characters, like beads on a necklace"},
+        {"term": "function", "definition": "A named action that does something (we'll learn to make our own later)", "analogy": "Like pressing a button — it does a specific job"}
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "02_variables",
+      "title": "Variables",
+      "concept_intro": "A variable is a name that holds a value. Instead of typing the same thing over and over, you store it in a variable and use the name instead.",
+      "analogy": "Variables are like labeled boxes. You put something in, write a name on the box, and later you can look inside by using the name.",
+      "exercise": {
+        "goal": "Create a personal info card using variables",
+        "rules": [
+          "Create a variable 'name' with your name",
+          "Create a variable 'age' with your age",
+          "Create a variable 'city' with where you live",
+          "Print all three using f-strings: f\"Name: {name}\""
+        ],
+        "examples": [
+          "Output should look like:",
+          "Name: Charles",
+          "Age: 16",
+          "City: Paris"
+        ],
+        "hints": [
+          "A variable is created with: name = \"Charles\"",
+          "Use f-strings to mix text and variables: f\"Name: {name}\""
+        ],
+        "starter_code": "# Create your variables here:\nname = \nage = \ncity = \n\n# Print your info card:\n",
+        "test_calls": "    # Run this to see your info card!\n    pass"
+      },
+      "tests": [
+        {"name": "test_has_name_var", "description": "Created a 'name' variable", "check": "file_contains", "value": "name ="},
+        {"name": "test_has_age_var", "description": "Created an 'age' variable", "check": "file_contains", "value": "age ="},
+        {"name": "test_prints_output", "description": "Prints something to the screen", "check": "output_line_count_min", "value": 1}
+      ],
+      "vocabulary": [
+        {"term": "variable", "definition": "A name that stores a value so you can use it later", "analogy": "A labeled box — put something in, use the label to find it"},
+        {"term": "assignment", "definition": "Giving a value to a variable using =", "analogy": "Putting something into a labeled box"},
+        {"term": "f-string", "definition": "A string that starts with f and can include {variables} inside it", "analogy": "A template with blanks that get filled in automatically"}
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "03_strings",
+      "title": "Strings",
+      "concept_intro": "Strings are text — anything inside quotes. Python can do amazing things with strings: combine them, repeat them, check their length, and much more.",
+      "analogy": "A string is literally a 'string' of characters — like letters on a clothesline, one after another.",
+      "exercise": {
+        "goal": "Build a username generator from first and last name",
+        "rules": [
+          "Write a function make_username(first, last) that:",
+          "Takes first and last name as parameters",
+          "Returns the username as: first letter of first name + full last name, all lowercase",
+          "Example: make_username(\"Charles\", \"Gouilliard\") → \"cgouilliard\""
+        ],
+        "examples": [
+          "make_username(\"Charles\", \"Gouilliard\") → \"cgouilliard\"",
+          "make_username(\"Ada\", \"Lovelace\") → \"alovelace\"",
+          "make_username(\"JEAN\", \"DUPONT\") → \"jdupont\""
+        ],
+        "hints": [
+          "You can get the first character of a string with: name[0]",
+          "The + operator joins strings together: \"a\" + \"b\" → \"ab\"",
+          "The .lower() method makes text lowercase: \"ABC\".lower() → \"abc\""
+        ],
+        "starter_code": "def make_username(first, last):\n    # YOUR CODE HERE\n    pass",
+        "test_calls": "    print(make_username(\"Charles\", \"Gouilliard\"))\n    print(make_username(\"Ada\", \"Lovelace\"))\n    print(make_username(\"JEAN\", \"DUPONT\"))"
+      },
+      "tests": [
+        {"name": "test_basic", "description": "Works with normal names", "check": "return_equals", "call": "make_username('Charles', 'Gouilliard')", "value": "cgouilliard"},
+        {"name": "test_another", "description": "Works with different names", "check": "return_equals", "call": "make_username('Ada', 'Lovelace')", "value": "alovelace"},
+        {"name": "test_uppercase", "description": "Handles UPPERCASE input", "check": "return_equals", "call": "make_username('JEAN', 'DUPONT')", "value": "jdupont"}
+      ],
+      "vocabulary": [
+        {"term": "concatenation", "definition": "Joining strings together with +", "analogy": "Gluing two pieces of text end to end"},
+        {"term": "index", "definition": "The position of a character in a string (starts at 0!)", "analogy": "Like a seat number in a cinema — first seat is 0"},
+        {"term": ".lower()", "definition": "A method that converts all letters to lowercase", "analogy": "An 'indoor voice' button for text"}
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "04_numbers",
+      "title": "Numbers & Math",
+      "concept_intro": "Python is great at math. It can add, subtract, multiply, divide, and more. There are two types of numbers: integers (whole numbers like 42) and floats (decimal numbers like 3.14).",
+      "analogy": "Python is a calculator that never makes arithmetic mistakes — you just need to tell it what to calculate.",
+      "exercise": {
+        "goal": "Build a tip calculator for a restaurant bill",
+        "rules": [
+          "Write a function calculate_tip(bill, tip_percent) that:",
+          "Calculates the tip amount",
+          "Returns the total (bill + tip) rounded to 2 decimal places",
+          "Tip percent is given as a whole number (e.g., 15 means 15%)"
+        ],
+        "examples": [
+          "calculate_tip(50.00, 15) → 57.5",
+          "calculate_tip(100.00, 20) → 120.0",
+          "calculate_tip(33.50, 18) → 39.53"
+        ],
+        "hints": [
+          "To get 15% of something: amount * 15 / 100",
+          "round(number, 2) rounds to 2 decimal places"
+        ],
+        "starter_code": "def calculate_tip(bill, tip_percent):\n    # YOUR CODE HERE\n    pass",
+        "test_calls": "    print(calculate_tip(50.00, 15))\n    print(calculate_tip(100.00, 20))\n    print(calculate_tip(33.50, 18))"
+      },
+      "tests": [
+        {"name": "test_fifteen_percent", "description": "15% tip on $50", "check": "return_equals", "call": "calculate_tip(50.00, 15)", "value": 57.5},
+        {"name": "test_twenty_percent", "description": "20% tip on $100", "check": "return_equals", "call": "calculate_tip(100.00, 20)", "value": 120.0},
+        {"name": "test_rounding", "description": "Rounds to 2 decimal places", "check": "return_equals", "call": "calculate_tip(33.50, 18)", "value": 39.53}
+      ],
+      "vocabulary": [
+        {"term": "integer (int)", "definition": "A whole number with no decimal point: 1, 42, -7", "analogy": "Counting numbers — what you use to count apples"},
+        {"term": "float", "definition": "A number with a decimal point: 3.14, 0.5, -2.7", "analogy": "Measuring numbers — what you use for weight or temperature"},
+        {"term": "operator", "definition": "A symbol that does math: + - * / // % **", "analogy": "The buttons on a calculator"}
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "05_input",
+      "title": "User Input",
+      "concept_intro": "So far your programs just run and produce output. But real programs talk TO the user too! input() pauses the program, shows a message, and waits for the user to type something.",
+      "analogy": "input() is like asking a question in a conversation — you ask, then wait for the answer before continuing.",
+      "exercise": {
+        "goal": "Build a personalized greeting program",
+        "rules": [
+          "Ask the user for their name using input()",
+          "Ask the user for their birth year using input()",
+          "Calculate their age (use 2026 as current year)",
+          "Print a greeting: 'Hello [name]! You are [age] years old.'",
+          "Remember: input() always returns a string — you need to convert the year to a number!"
+        ],
+        "examples": [
+          "What is your name? Charles",
+          "What year were you born? 2010",
+          "Hello Charles! You are 16 years old."
+        ],
+        "hints": [
+          "input(\"Your question: \") shows the question and waits for typing",
+          "int() converts a string to a number: int(\"2010\") → 2010",
+          "Age = 2026 - birth_year"
+        ],
+        "starter_code": "# Ask for the user's name:\n\n# Ask for their birth year:\n\n# Calculate age:\n\n# Print the greeting:\n",
+        "test_calls": "    # This exercise uses input(), so run it interactively!\n    # Type: python3 exercise.py\n    pass"
+      },
+      "tests": [
+        {"name": "test_uses_input", "description": "Uses input() to ask questions", "check": "file_contains", "value": "input("},
+        {"name": "test_uses_int", "description": "Converts input to number with int()", "check": "file_contains", "value": "int("},
+        {"name": "test_calculates_age", "description": "Calculates age from birth year", "check": "file_contains_any", "value": ["2026 -", "2026-", "- birth", "- year"]}
+      ],
+      "vocabulary": [
+        {"term": "input()", "definition": "A function that asks the user to type something and returns what they typed as a string", "analogy": "Like passing someone a microphone and waiting for them to speak"},
+        {"term": "type conversion", "definition": "Changing data from one type to another, like string to number", "analogy": "Translating between languages — same meaning, different form"}
+      ]
+    }
+  ],
+  "project": {
+    "slug": "p1_mad_libs",
+    "title": "Mad Libs Generator",
+    "description": "Build a fill-in-the-blank story game! Ask the user for different types of words (nouns, verbs, adjectives) and plug them into a funny story template.",
+    "concepts_used": ["print", "variables", "strings", "f-strings", "input", "type_conversion"],
+    "steps": [
+      "Create a story template with blanks (use variables for the blanks)",
+      "Ask the user for each blank using input() (e.g., 'Give me a noun: ')",
+      "Store each answer in a variable",
+      "Print the completed story using f-strings",
+      "Add a second story template for variety"
+    ],
+    "bonus": [
+      "Add 3+ different story templates and let the user pick one",
+      "Save the completed story to a .txt file",
+      "Let the user play again without restarting the program"
+    ]
+  }
+}

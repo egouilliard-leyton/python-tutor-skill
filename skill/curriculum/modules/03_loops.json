@@ -1,0 +1,19 @@
+{
+  "module_id": 3,
+  "name": "Repetition",
+  "lessons": [
+    {"id": 11, "slug": "11_while_loops", "title": "While Loops", "concept_intro": "A while loop repeats code as long as a condition is True. It's like saying 'keep going until I tell you to stop.'", "analogy": "Like eating chips: WHILE there are chips in the bag, keep eating. When the bag is empty, stop."},
+    {"id": 12, "slug": "12_for_loops", "title": "For Loops & range()", "concept_intro": "A for loop repeats code a specific number of times. range(5) gives you 0, 1, 2, 3, 4.", "analogy": "Like a coach saying 'do 10 pushups' — you know exactly how many times to repeat."},
+    {"id": 13, "slug": "13_loop_control", "title": "Break & Continue", "concept_intro": "break exits a loop early. continue skips to the next iteration.", "analogy": "break = emergency exit. continue = skip this one, move to the next."},
+    {"id": 14, "slug": "14_nested_loops", "title": "Nested Loops", "concept_intro": "A loop inside a loop. The inner loop runs completely for each step of the outer loop.", "analogy": "Like a clock: the minute hand (inner) goes all the way around for each hour (outer)."},
+    {"id": 15, "slug": "15_loop_patterns", "title": "Loop Patterns", "concept_intro": "Common patterns: counting, accumulating (summing), searching, and filtering.", "analogy": "These are the 'recipes' that every programmer uses over and over."}
+  ],
+  "project": {
+    "slug": "p3_guessing_game",
+    "title": "Number Guessing Game",
+    "description": "Computer picks a random number, player guesses with higher/lower hints.",
+    "concepts_used": ["while", "for", "break", "continue", "range", "input", "conditionals", "random"],
+    "steps": ["Generate random number", "Get user guess", "Compare and hint", "Add loop", "Count guesses", "Add play again"],
+    "bonus": ["Difficulty levels", "Max guess limit", "Best score tracking"]
+  }
+}

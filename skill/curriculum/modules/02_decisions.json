@@ -1,0 +1,172 @@
+{
+  "module_id": 2,
+  "name": "Making Decisions",
+  "lessons": [
+    {
+      "id": 6,
+      "slug": "06_booleans",
+      "title": "Booleans & Comparisons",
+      "concept_intro": "So far, Python does exactly what you tell it, every time. But real programs need to DECIDE things. Booleans are the foundation: True or False, yes or no.",
+      "analogy": "A boolean is like a light switch — it's either ON (True) or OFF (False). Comparisons are questions that Python answers with True or False.",
+      "type": "predict",
+      "exercise": {
+        "goal": "Predict what Python will say — True or False?",
+        "rules": [
+          "For each comparison below, predict whether Python will say True or False",
+          "Write your prediction as a comment, then uncomment the print to check",
+          "Get at least 7 out of 8 correct!"
+        ],
+        "starter_code": "# Predict: True or False? Write your guess, then uncomment to check.\n\n# 1. Is 10 greater than 5?\n# My prediction: \nprint(10 > 5)\n\n# 2. Is 3 equal to 3.0?\n# My prediction: \nprint(3 == 3.0)\n\n# 3. Is \"hello\" equal to \"Hello\"?\n# My prediction: \nprint(\"hello\" == \"Hello\")\n\n# 4. Is 7 not equal to 7?\n# My prediction: \nprint(7 != 7)\n\n# 5. Is 1 greater than or equal to 1?\n# My prediction: \nprint(1 >= 1)\n\n# 6. Is 0 equal to False?\n# My prediction: \nprint(0 == False)\n\n# 7. Is \"\" (empty string) equal to False?\n# My prediction: \nprint(\"\" == False)\n\n# 8. Is 10 less than 10?\n# My prediction: \nprint(10 < 10)"
+      },
+      "vocabulary": [
+        {"term": "boolean", "definition": "A value that is either True or False", "analogy": "A light switch — ON or OFF, nothing in between"},
+        {"term": "comparison operator", "definition": "Symbols that compare two values: ==, !=, <, >, <=, >=", "analogy": "Questions you ask Python: 'Is this bigger? Equal? Different?'"},
+        {"term": "==", "definition": "Checks if two values are EQUAL (not the same as = which assigns!)", "analogy": "Asking 'are these the same?' vs = which means 'make this equal to'"}
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "07_if_else",
+      "title": "If / Else",
+      "concept_intro": "Now that Python can answer True/False questions, we can make it DO different things based on the answer. 'if' means 'do this when True', 'else' means 'otherwise do that'.",
+      "analogy": "It's like a fork in the road — if the sign says 'bridge open', go straight. Otherwise, take the detour.",
+      "exercise": {
+        "goal": "Write a function that checks if someone can vote",
+        "rules": [
+          "Write a function can_vote(age) that:",
+          "Returns 'You can vote!' if age is 18 or older",
+          "Returns 'Not yet! You need to wait X more years.' if under 18",
+          "X should be the actual number of years left"
+        ],
+        "examples": [
+          "can_vote(20) → 'You can vote!'",
+          "can_vote(18) → 'You can vote!'",
+          "can_vote(15) → 'Not yet! You need to wait 3 more years.'"
+        ],
+        "hints": [
+          "Use if age >= 18: for the check",
+          "Years left = 18 - age"
+        ],
+        "starter_code": "def can_vote(age):\n    # YOUR CODE HERE\n    pass",
+        "test_calls": "    print(can_vote(20))\n    print(can_vote(18))\n    print(can_vote(15))"
+      },
+      "vocabulary": [
+        {"term": "if", "definition": "Runs code only when a condition is True", "analogy": "IF it's raining, take an umbrella"},
+        {"term": "else", "definition": "Runs code when the if condition is False", "analogy": "OTHERWISE, wear sunglasses"},
+        {"term": "condition", "definition": "An expression that Python evaluates to True or False", "analogy": "The question being asked at the fork in the road"}
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "08_elif",
+      "title": "Elif Chains",
+      "concept_intro": "Sometimes there aren't just two choices — there are many. 'elif' (short for 'else if') lets you check multiple conditions in order.",
+      "analogy": "Like a restaurant menu with prices: if you have over $50, get the steak. Elif over $30, get the chicken. Elif over $15, get the pasta. Else, get the soup.",
+      "exercise": {
+        "goal": "Write a grade calculator",
+        "rules": [
+          "Write a function get_grade(score) that:",
+          "Returns 'A' for 90-100",
+          "Returns 'B' for 80-89",
+          "Returns 'C' for 70-79",
+          "Returns 'D' for 60-69",
+          "Returns 'F' for below 60"
+        ],
+        "examples": [
+          "get_grade(95) → 'A'",
+          "get_grade(83) → 'B'",
+          "get_grade(71) → 'C'",
+          "get_grade(65) → 'D'",
+          "get_grade(45) → 'F'"
+        ],
+        "hints": [
+          "Start with the highest: if score >= 90: return 'A'",
+          "Then check each range with elif"
+        ],
+        "starter_code": "def get_grade(score):\n    # YOUR CODE HERE\n    pass",
+        "test_calls": "    print(get_grade(95))\n    print(get_grade(83))\n    print(get_grade(71))\n    print(get_grade(65))\n    print(get_grade(45))"
+      },
+      "vocabulary": [
+        {"term": "elif", "definition": "Short for 'else if' — checks another condition if the first was False", "analogy": "Like 'or if not that, then check this...'"}
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "09_logical_ops",
+      "title": "Logical Operators",
+      "concept_intro": "Sometimes one condition isn't enough. 'and' means BOTH must be true. 'or' means AT LEAST ONE must be true. 'not' flips True to False and vice versa.",
+      "analogy": "'and' = both hands must be raised. 'or' = at least one hand raised. 'not' = put your hand DOWN if it's up.",
+      "type": "bugfix",
+      "exercise": {
+        "goal": "Fix the broken rollercoaster checker",
+        "rules": [
+          "This code has 3 bugs — find and fix them all",
+          "The function should return True only if height >= 120 AND age >= 8",
+          "Read the code carefully, figure out what's wrong, and fix it"
+        ],
+        "starter_code": "def can_ride(height, age):\n    # BUG 1: Something wrong with the logic\n    if height >= 120 or age >= 8:\n        return True\n    # BUG 2: Something wrong with this comparison\n    elif height < 120 and age = 8:\n        return False\n    # BUG 3: What about the case where both fail?\n    return True",
+        "test_calls": "    print(can_ride(130, 10))   # Should be True\n    print(can_ride(110, 10))   # Should be False\n    print(can_ride(130, 6))    # Should be False\n    print(can_ride(100, 5))    # Should be False\n    print(can_ride(120, 8))    # Should be True"
+      },
+      "vocabulary": [
+        {"term": "and", "definition": "Both conditions must be True for the whole thing to be True", "analogy": "Like needing BOTH a ticket AND an ID to enter"},
+        {"term": "or", "definition": "At least one condition must be True", "analogy": "Like accepting cash OR card — either works"},
+        {"term": "not", "definition": "Flips True to False and False to True", "analogy": "Like saying 'the opposite of...'"}
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "10_nested_if",
+      "title": "Nested Conditions",
+      "concept_intro": "Sometimes you need to check a condition INSIDE another condition. This is called nesting — an if inside an if.",
+      "analogy": "Like airport security: first check — do you have a boarding pass? If yes, second check — any liquids over 100ml?",
+      "exercise": {
+        "goal": "Build a movie ticket pricer with multiple rules",
+        "rules": [
+          "Write a function ticket_price(age, is_student, day) that returns the price:",
+          "Base prices: child (under 12) = 6, adult = 12, senior (65+) = 8",
+          "Students get 2 off adult price (must be 12-64 to be student)",
+          "On 'tuesday', everyone gets 2 off their price",
+          "Minimum price is always 4 (discounts can't go below that)"
+        ],
+        "examples": [
+          "ticket_price(10, False, 'monday') → 6",
+          "ticket_price(25, True, 'monday') → 10",
+          "ticket_price(25, False, 'tuesday') → 10",
+          "ticket_price(25, True, 'tuesday') → 8",
+          "ticket_price(70, False, 'tuesday') → 6",
+          "ticket_price(8, False, 'tuesday') → 4"
+        ],
+        "hints": [
+          "Start by determining the base price from age",
+          "Then apply student discount if applicable",
+          "Then apply Tuesday discount",
+          "Finally, use max(price, 4) to enforce the minimum"
+        ],
+        "starter_code": "def ticket_price(age, is_student, day):\n    # YOUR CODE HERE\n    pass",
+        "test_calls": "    print(ticket_price(10, False, 'monday'))\n    print(ticket_price(25, True, 'monday'))\n    print(ticket_price(25, False, 'tuesday'))\n    print(ticket_price(25, True, 'tuesday'))\n    print(ticket_price(70, False, 'tuesday'))\n    print(ticket_price(8, False, 'tuesday'))"
+      },
+      "vocabulary": [
+        {"term": "nested", "definition": "Code placed inside other code — like an if inside another if", "analogy": "Russian nesting dolls — one inside the other"}
+      ]
+    }
+  ],
+  "project": {
+    "slug": "p2_adventure",
+    "title": "Text Adventure Game",
+    "description": "Build a simple choose-your-own-adventure game! The player reads a story and makes choices that lead to different outcomes.",
+    "concepts_used": ["if", "elif", "else", "and", "or", "not", "input", "variables", "strings"],
+    "steps": [
+      "Write the opening scene and print it",
+      "Ask the player to make a choice (e.g., 'Go left or right?')",
+      "Use if/elif/else to branch to different scenes based on choice",
+      "Add at least 2 more decision points (nested ifs)",
+      "Create at least 3 different endings (win, lose, secret)",
+      "Add a play-again loop"
+    ],
+    "bonus": [
+      "Add an inventory system (store items in variables)",
+      "Make some choices depend on previous choices",
+      "Add a health/score system"
+    ]
+  }
+}

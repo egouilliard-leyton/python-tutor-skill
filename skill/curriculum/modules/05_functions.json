@@ -1,0 +1,19 @@
+{
+  "module_id": 5,
+  "name": "Functions",
+  "lessons": [
+    {"id": 21, "slug": "21_defining_functions", "title": "Defining Functions", "concept_intro": "A function is a reusable block of code with a name. You define it once, call it whenever you need it.", "analogy": "Like a recipe: write it once in the cookbook, follow it every time you want to make that dish."},
+    {"id": 22, "slug": "22_params_return", "title": "Parameters & Return", "concept_intro": "Parameters are inputs to a function. Return is the output. You put ingredients in, you get a dish out.", "analogy": "A vending machine: put in coins (parameters), press a button, get a snack (return value)."},
+    {"id": 23, "slug": "23_default_params", "title": "Default Parameters", "concept_intro": "Default parameters have a fallback value if none is provided.", "analogy": "Like ordering coffee: 'medium' is the default size unless you say otherwise."},
+    {"id": 24, "slug": "24_scope", "title": "Scope", "concept_intro": "Variables created inside a function only exist inside that function. This is called 'local scope.'", "analogy": "What happens in the function stays in the function — like a private conversation in a room."},
+    {"id": 25, "slug": "25_composition", "title": "Functions Calling Functions", "concept_intro": "Functions can call other functions. This is how you build complex programs from simple pieces.", "analogy": "Like an assembly line: one worker cuts, another paints, another packages — each does one job and passes the result along."}
+  ],
+  "project": {
+    "slug": "p5_calculator",
+    "title": "Calculator",
+    "description": "Menu-driven calculator with add/subtract/multiply/divide functions.",
+    "concepts_used": ["def", "parameters", "return", "scope", "composition", "while", "if"],
+    "steps": ["Create math functions", "Build menu display", "Get user input", "Route to correct function", "Display result", "Loop for multiple calculations"],
+    "bonus": ["History of calculations", "Undo last operation", "Scientific functions (power, sqrt)"]
+  }
+}
