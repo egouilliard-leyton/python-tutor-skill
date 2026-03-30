@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Personalized Python tutor with memory, Socratic teaching, real .py exercises in VS Code/Cursor. Commands — /learn, /learn start, /learn check, /learn hint, /learn next, /learn progress, /learn review, /learn project, /learn run, /learn try, /learn explain, /learn vocab, /learn goals, /learn streak, /learn back, /learn update, /learn help
+description: Personalized Python tutor with memory, Socratic teaching, real .py exercises in VS Code/Cursor. Commands — /learn, /learn start, /learn check, /learn hint, /learn next, /learn progress, /learn review, /learn project, /learn run, /learn try, /learn explain, /learn vocab, /learn goals, /learn streak, /learn stats, /learn back, /learn update, /learn help
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent
 ---
 
@@ -62,10 +62,11 @@ If any file is missing or corrupted, recreate it from defaults without asking th
    - Create `~/learning/` directory tree:
      ```
      ~/learning/
-     ├── .claude/    (state files)
-     ├── lessons/    (exercise folders)
-     ├── projects/   (project folders)
-     └── sandbox/    (scratch.py)
+     ├── .claude/           (state files)
+     │   └── attempts/      (per-exercise attempt history)
+     ├── lessons/            (exercise folders)
+     ├── projects/           (project folders)
+     └── sandbox/            (scratch.py)
      ```
    - Store everything in `environment.json` — NEVER check these again
 6. Create `profile.json` with answers
@@ -86,26 +87,42 @@ Read all state files, then:
 
 Always update `streak.json` with today's date.
 
-### `/learn check` — Test & Feedback
+### `/learn check` — Test & Feedback (with Attempt Tracking)
 
-1. Read the user's current exercise file
-2. Run it: `python3 exercise.py` — capture stdout and stderr
-3. If runtime error:
-   - Translate error to plain language (see Error Translation section)
-   - Ask: "What do you think went wrong?"
-   - Log error pattern to `errors.json`
-   - Do NOT give the fix
-4. If no error, run tests: `python3 -m pytest test_exercise.py -v --tb=short 2>&1` or use the custom test runner
-5. Report: "X/Y tests passing"
-   - For failures: describe the SCENARIO that fails, not the fix
-   - Ask a leading question
-6. If ALL tests pass:
-   - Celebrate appropriately (not over the top)
-   - Check code quality (only after week 2+): style, naming, Pythonic patterns
-   - Update `concepts.json` comfort score
-   - Update `curriculum.json` progress
-   - Update `achievements.json` if milestone reached
-   - Suggest: "Type `/learn next` when ready"
+**Every `/learn check` creates a permanent attempt record.** This is how we track the full learning journey.
+
+1. Read the user's current exercise file (get full code content)
+2. Run it: `cd ~/learning/lessons/<current> && python3 exercise.py` — capture stdout and stderr
+3. Run tests: `cd ~/learning/lessons/<current> && python3 -m pytest test_exercise.py -v --tb=short 2>&1`
+4. **LOG THE ATTEMPT** to `~/learning/.claude/attempts/<lesson_slug>.json`:
+   ```json
+   {
+     "attempt": <number>,
+     "timestamp": "<ISO timestamp>",
+     "code_snapshot": "<full content of exercise.py>",
+     "result": "pass" | "test_failure" | "runtime_error" | "syntax_error",
+     "tests_passed": <int>,
+     "tests_total": <int>,
+     "failing_tests": ["test_name1", "test_name2"],
+     "error_type": "<SyntaxError|TypeError|etc or null>",
+     "error_message": "<the error message or null>",
+     "error_line": <line number or null>,
+     "hints_used_before": <how many hints used before this attempt>
+   }
+   ```
+   - If the attempt file doesn't exist yet, create it with: `{"lesson": "<slug>", "started": "<now>", "completed": null, "total_attempts": 0, "hints_used": 0, "attempts": []}`
+   - Append the new attempt to the `attempts` array
+   - Increment `total_attempts`
+   - If result is "pass", set `completed` to the current timestamp
+5. **Give feedback based on result:**
+   - **Runtime/syntax error:** Translate to plain language, ask "what do you think went wrong?"
+   - **Test failures:** Report "X/Y tests passing". Describe the failing SCENARIO, not the fix. Ask a leading question.
+   - **All pass:** Celebrate briefly. Update concepts.json, curriculum.json, achievements.json. Suggest `/learn next`.
+   - **Check code quality** only after week 2+ and only after all tests pass.
+6. **Pattern detection across attempts:**
+   - If same error type appears 3+ times across different exercises → flag it: "I've noticed you often get [error type]. Let's do a quick drill."
+   - If user goes from 2/7 → 5/7 → 7/7 → acknowledge the progression: "You went from 2 to 5 to all 7 — nice improvement!"
+   - If attempt count > 5 on one exercise → trigger struggle intervention (change approach)
 
 ### `/learn run` — Just Execute
 
@@ -186,6 +203,45 @@ Show current goals from `profile.json`. Allow updating goal, track, or time comm
 
 Show current streak, longest streak, total sessions, total time.
 
+### `/learn stats` — Deep Learning Analytics
+
+Analyze the attempt history to show detailed learning insights. Read all files in `~/learning/.claude/attempts/`.
+
+Display:
+```
+LEARNING STATS — Charles
+
+  Exercises completed:  12/25
+  Total attempts:       47
+  First-try passes:     4 (33%)
+  Average attempts:     3.2 per exercise
+
+  PROGRESSION
+  Module 1:  ██████████  avg 2.1 attempts  (getting comfortable)
+  Module 2:  ████████░░  avg 3.5 attempts  (conditionals were hard)
+  Module 3:  ██████░░░░  avg 4.2 attempts  (loops took practice)
+
+  COMMON ERROR PATTERNS
+  1. SyntaxError: missing colon (8 times, improving ↓)
+  2. TypeError: str + int (5 times, still occurring →)
+  3. Off-by-one in ranges (3 times, new pattern)
+
+  BIGGEST WINS
+  - Lesson 12 (FizzBuzz): 6 attempts → solved!
+  - Lesson 09 (bug fix): found all 3 bugs in 2 attempts
+
+  IMPROVEMENT OVER TIME
+  First 5 exercises:  avg 4.1 attempts, 2.3 hints
+  Last 5 exercises:   avg 2.4 attempts, 0.8 hints
+  → 41% fewer attempts needed! You're getting faster.
+```
+
+Also show:
+- Which exercises took the most attempts (hardest for this learner)
+- Which concepts have the lowest comfort scores
+- Time between first attempt and completion per exercise
+- Hint dependency trend (using fewer hints over time?)
+
 ### `/learn update` — Sync Repo Updates
 
 When exercises, tests, or teaching guides are updated in the repo, sync changes to the user's `~/learning/` directory.
@@ -229,6 +285,7 @@ PYTHON TUTOR — Command Reference
   /learn vocab        See all programming terms you've learned
   /learn goals        View or update your learning goals
   /learn streak       See your coding streak and stats
+  /learn stats        Deep analytics on your learning journey
   /learn update       Sync latest exercises and tests from the repo
   /learn help         This help message
 

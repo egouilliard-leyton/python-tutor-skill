@@ -152,6 +152,74 @@ When an error type reaches 3+ occurrences and `improving: false`, trigger a targ
 }
 ```
 
+### attempts/<lesson_slug>.json — Per-Exercise Attempt History
+
+The most granular tracking — every `/learn check` creates a record. This is how we track the full learning journey within each exercise.
+
+```json
+{
+  "lesson": "07_if_else",
+  "started": "2026-06-05T14:30:00",
+  "completed": "2026-06-05T14:52:00",
+  "total_attempts": 3,
+  "hints_used": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "timestamp": "2026-06-05T14:35:00",
+      "code_snapshot": "def can_vote(age):\n    if age > 18:\n        return 'You can vote!'\n",
+      "result": "test_failure",
+      "tests_passed": 3,
+      "tests_total": 7,
+      "failing_tests": ["test_exactly_18", "test_years_remaining"],
+      "error_type": null,
+      "error_message": null,
+      "error_line": null,
+      "hints_used_before": 0
+    },
+    {
+      "attempt": 2,
+      "timestamp": "2026-06-05T14:41:00",
+      "code_snapshot": "def can_vote(age):\n    if age >= 18:\n        return 'You can vote!'\n    else:\n        return 'Not yet! ' + 18 - age + ' more years.'\n",
+      "result": "runtime_error",
+      "error_type": "TypeError",
+      "error_message": "can only concatenate str (not \"int\") to str",
+      "error_line": 5,
+      "tests_passed": 0,
+      "tests_total": 7,
+      "failing_tests": [],
+      "hints_used_before": 1
+    },
+    {
+      "attempt": 3,
+      "timestamp": "2026-06-05T14:52:00",
+      "code_snapshot": "def can_vote(age):\n    if age >= 18:\n        return 'You can vote!'\n    else:\n        return f'Not yet! {18 - age} more years to go.'\n",
+      "result": "pass",
+      "tests_passed": 7,
+      "tests_total": 7,
+      "failing_tests": [],
+      "error_type": null,
+      "error_message": null,
+      "error_line": null,
+      "hints_used_before": 1
+    }
+  ]
+}
+```
+
+This example tells the full story:
+1. Used `>` instead of `>=` (off-by-one) → 3/7 tests pass
+2. Fixed the comparison but hit TypeError building the string → runtime crash
+3. Switched to f-string → all 7 pass
+
+**What we can derive from attempt data:**
+- Average attempts per exercise (difficulty indicator)
+- Common error patterns across exercises
+- Improvement trend (fewer attempts over time)
+- Hint dependency (using fewer hints as skills build)
+- Time-to-completion per exercise
+- Which exercises were hardest for this specific learner
+
 ### sessions/YYYY-MM-DD.json — Session Logs
 
 ```json
